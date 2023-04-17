@@ -1,35 +1,43 @@
 use_bpm 70
-b = [:g4, :b4, :fs5, :e5, :fs5, :a4, :fs5, :g5]
+notes =[:g4,:b4,:fs5,:e5,:fs5,:a4,:fs5,:g5]
 index = 0
 sleep 0.5
 
-c = [:e3, :d3, :b3, :g3]
+#stop after 4 times
 live_loop :top do
-  play b[index]
-  sleep 0.5
-  index =index+1
+  8.times do
+    play notes[index]
+    sleep 0.5
+    index=index+1
+  end
+  index=0
 end
 
+#stop after 4 times
 live_loop :bottom do
-  use_synth_defaults amp: 0.75
-  play :e3
-  play :d3
-  play :b3
-  play :g3
-  sleep 1
-  play :e3
-  play :d3
-  play :b3
-  play :g3
-  sleep 1
-  
-  play :e3
-  play :c3
-  play :a3
-  sleep 1
-  play :e3
-  play :c3
-  play :a3
-  sleep 1
-  
+  4.times do
+    use_synth_defaults amp: 0.75
+    play :e3
+    play :d3
+    play :b3
+    play :g3
+    sleep 1
+    play :e3
+    play :d3
+    play :b3
+    play :g3
+    sleep 1
+    
+    
+    play :e3
+    play :c3
+    play :a3
+    sleep 1
+    play :e3
+    play :c3
+    play :a3
+    sleep 1
+  end
+  stop
 end
+
